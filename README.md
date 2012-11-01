@@ -1,4 +1,4 @@
-Post 2 Rest Flexget plugin 0.1.0
+Post2Rest Flexget plugin 0.1.0
 ================================
 Post your entry data as json payload to a rest url endpoint. (couchdb anyone?)
 
