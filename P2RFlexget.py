@@ -14,17 +14,23 @@ class Post2RestFlexget(object):
         d.accept('dict', key='data').accept_any_key('any')
         return d
 
+    @staticmethod
+    def serialize(o):
+        if not isinstance(o, (str, unicode, int, long, float, bool) ):
+           return None
+        else:
+           return o
+
     def on_task_output(self,task):
         for entry in task.entries:
             entry_dict = dict(entry)
-            del entry_dict['quality']
             if 'data' in self.config:
                 entry_dict.update(self.config['data'])
             entry_dict['post2rest']={
                 'time': time.asctime(),
                 'timestamp': time.time()
             }
-            data=json.dumps(entry_dict)
+            data=json.dumps(entry_dict,default=Post2RestFlexget.serialize)
             headers = {'content-type': 'application/json'}
             requests.post(self.config['url'], data=data, headers=headers)
 
