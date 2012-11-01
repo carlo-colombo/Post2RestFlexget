@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 class Post2RestFlexget(object):
 
@@ -19,6 +20,10 @@ class Post2RestFlexget(object):
             del entry_dict['quality']
             if 'data' in self.config:
                 entry_dict.update(self.config['data'])
+            entry_dict['post2rest']={
+                'time': time.asctime(),
+                'timestamp': time.time()
+            }
             data=json.dumps(entry_dict)
             headers = {'content-type': 'application/json'}
             requests.post(self.config['url'], data=data, headers=headers)
