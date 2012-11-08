@@ -9,7 +9,7 @@ Drop `P2RFlexget.py` in `~/.flexget/plugins`
 Flexget info
 ------------
 - It is an output plugin (`on_task_output`)
-- All entry field are added but quality
+- All plain entry field are added (dict, string, list)
 - Additional keys from data field are added to the payload
 - Timestamp (human readable and seconds since epoch) are added to payload in post2rest key
 - Field rewriting

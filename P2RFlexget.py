@@ -4,9 +4,6 @@ import time
 
 class Post2RestFlexget(object):
 
-    def on_process_start(self,feed):
-        self.config = feed.config['post2rest']
-
     def validator(self):
         from flexget import validator
         d = validator.factory('dict')
@@ -23,6 +20,7 @@ class Post2RestFlexget(object):
            return o
 
     def on_task_output(self,task):
+        config = task.config['post2rest']
         for entry in task.entries:
             entry_dict = dict(entry)
             if 'data' in self.config:
@@ -39,7 +37,7 @@ class Post2RestFlexget(object):
             }
             data=json.dumps(entry_dict,default=Post2RestFlexget.serialize)
             headers = {'content-type': 'application/json'}
-            requests.post(self.config['url'], data=data, headers=headers)
+            requests.post(config['url'], data=data, headers=headers)
 
 try:
     from flexget.plugin import register_plugin
