@@ -1,9 +1,13 @@
 tasks:
   test P2R:
     mock:
-      - { title: 'Name.Of.The.Series.S01E01.XviD-FlexGet', series_name: 'Name Of The Series', series_season: 1, series_episode: 1 }
+      - { title: 'Name.Of.The.Series.S01E01.XviD-FlexGet', series_name: 'Revolution 2012', series_season: 1, series_episode: 1 }
     post2rest:
-      url: 'http://localhost:5984/rensub'
+      url: 'http://localhost:5984/rensub_test'
       data:
         subtitle: yes
+      rewrite:
+        series_name:
+          old: 'Revolution 2012'
+          new: Revolution
     accept_all: yes

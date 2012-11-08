@@ -1,4 +1,4 @@
-Post2Rest Flexget plugin 0.1.0
+Post2Rest Flexget plugin 0.2.0
 ================================
 Post your entry data as json payload to a rest url endpoint. (couchdb anyone?)
 
@@ -12,6 +12,7 @@ Flexget info
 - All entry field are added but quality
 - Additional keys from data field are added to the payload
 - Timestamp (human readable and seconds since epoch) are added to payload in post2rest key
+- Field rewriting
 
 Configuration example
 ---------------------
@@ -24,14 +25,16 @@ tasks:
       url: 'http://.../..'
       data: #optional, entry will be extended with this data
         additional_data: 'one more'
+      rewrite: #optional
+        series_name: #field name
+          old: 'Revolution 2012' #value to search
+          new: Revolution #value that replace
 ```
 
 Payload example
 ---------------
 ```
 {
-   "_id": "21b4ee6acae7dd560242b252f8008927",
-   "_rev": "1-df3010dbd3ecb65b7f258eafa08576e1",
    "accepted_by": "accept_all",
    "task": "test P2R",
    "subtitle": true,

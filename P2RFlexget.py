@@ -12,6 +12,7 @@ class Post2RestFlexget(object):
         d = validator.factory('dict')
         d.accept('url', key='url')
         d.accept('dict', key='data').accept_any_key('any')
+        d.accept('dict', key='rewrite').accept_any_key('any')
         return d
 
     @staticmethod
@@ -26,6 +27,12 @@ class Post2RestFlexget(object):
             entry_dict = dict(entry)
             if 'data' in self.config:
                 entry_dict.update(self.config['data'])
+            if 'rewrite' in self.config:
+                for field, rewrite in self.config['rewrite'].iteritems():
+                    if field in entry_dict:
+                        if entry_dict[field] == rewrite['old']:
+                            entry_dict[field] = rewrite['new']
+
             entry_dict['post2rest']={
                 'time': time.asctime(),
                 'timestamp': time.time()
