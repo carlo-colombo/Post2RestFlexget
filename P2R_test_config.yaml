@@ -7,7 +7,8 @@ tasks:
       data:
         subtitle: yes
       rewrite:
-        series_name:
+        -
+          field: 'series_name'
           old: 'Revolution 2012'
           new: Revolution
     accept_all: yes

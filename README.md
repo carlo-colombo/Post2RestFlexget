@@ -26,9 +26,14 @@ tasks:
       data: #optional, entry will be extended with this data
         additional_data: 'one more'
       rewrite: #optional
-        series_name: #field name
+        -
+          field: series_name
           old: 'Revolution 2012' #value to search
           new: Revolution #value that replace
+        -
+         field: another_field
+         old: 'ye old value'
+         new: 'The New Value'
 ```
 
 Payload example
