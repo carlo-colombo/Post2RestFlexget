@@ -30,7 +30,8 @@ class Post2RestFlexget(object):
                     if rewrite_rule['field'] in entry_dict:
                         field = rewrite_rule['field']
                         if entry_dict[field] == rewrite_rule['old']:
-                            entry_dict[field] = rewrite_rule['new']
+                            entry_dict[field+'_old'] = rewrite_rule['old']
+                            entry_dict[field]        = rewrite_rule['new']
 
             entry_dict['post2rest']={
                 'time': time.asctime(),
